@@ -6,7 +6,7 @@ This is a Next.js application with PostgreSQL integration for managing account h
 
 1. Clone the repository
 2. Install dependencies: `npm install`
-3. Set up PostgreSQL database and update the connection string in `.env.local`
+3. Set up PostgreSQL database and update the connection string in `.env`
 4. Run database migrations: `npx prisma migrate dev --name init`
 5. Start the development server: `npm run dev`
 

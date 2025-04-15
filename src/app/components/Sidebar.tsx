@@ -4,6 +4,9 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { HomeIcon, UserIcon, CogIcon, QuestionMarkCircleIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import { FaQuestion } from "react-icons/fa6";
+import { MdOutlineEmail } from "react-icons/md";
+import { IoLogOutOutline } from "react-icons/io5";
 
 interface SidebarProps {
   isOpen: boolean
@@ -19,8 +22,8 @@ export default function Sidebar({ isOpen }: SidebarProps) {
   ]
 
   const supportItems = [
-    { name: 'FAQs', href: '/faqs', icon: QuestionMarkCircleIcon },
-    { name: 'Contact Us', href: '/contact', icon: PhoneIcon }
+    { name: 'FAQs', href: '/faqs', icon: <FaQuestion /> },
+    { name: 'Contact Us', href: '/contact', icon: <MdOutlineEmail />}
   ]
 
   return (
@@ -49,7 +52,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
           </div>
 
           <div className="border-t border-gray-200 mt-4 pt-4 px-4">
-            <p className="text-xs text-gray-500 px-3 mb-2">Help and Support</p>
+            <p className="text-[16px] font-bold text-[#000000] px-3 mb-2">Help & Support</p>
             <div className="space-y-1">
               {supportItems.map((item) => {
                 const isActive = pathname === item.href
@@ -63,7 +66,8 @@ export default function Sidebar({ isOpen }: SidebarProps) {
                         : 'text-gray-700 hover:bg-gray-100'
                     }`}
                   >
-                    <item.icon className="h-5 w-5" />
+
+                    {item.icon}
                     <span>{item.name}</span>
                   </Link>
                 )
@@ -72,8 +76,9 @@ export default function Sidebar({ isOpen }: SidebarProps) {
           </div>
         </nav>
 
-        <div className="p-4 border-t border-gray-200">
-          <button className="w-full flex items-center justify-center px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100">
+        <div className="p-4 border-t border-gray-200 mt-16 flex gap-2 items-center w-full justify-center px-3 py-2 rounded-lg">
+        <IoLogOutOutline className='w-[19px] h-[19px] text-[#BF0202]' />
+          <button className="text-[#BF0202]">
             Logout
           </button>
         </div>

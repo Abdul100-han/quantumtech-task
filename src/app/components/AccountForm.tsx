@@ -150,7 +150,7 @@ export default function AccountForm({ initialData }: { initialData?: any }) {
           />
           {errors.firstName && (
             <p className="mt-1 text-sm text-red-600">
-              {errors.firstName.message}
+              {errors.firstName.message as string}
             </p>
           )}
         </div>
@@ -166,7 +166,7 @@ export default function AccountForm({ initialData }: { initialData?: any }) {
           />
           {errors.lastName && (
             <p className="mt-1 text-sm text-red-600">
-              {errors.lastName.message}
+              {errors.lastName.message as string}
             </p>
           )}
         </div>
@@ -186,7 +186,7 @@ export default function AccountForm({ initialData }: { initialData?: any }) {
           </select>
           {errors.occupation && (
             <p className="mt-1 text-sm text-red-600">
-              {errors.occupation.message}
+              {errors.occupation.message as string}
             </p>
           )}
         </div>

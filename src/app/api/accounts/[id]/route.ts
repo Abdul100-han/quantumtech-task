@@ -19,9 +19,22 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const body = await req.json()
+    const formData = await req.formData()
+
+    const body = {
+      firstName: formData.get('firstName')?.toString() || '',
+      lastName: formData.get('lastName')?.toString() || '',
+      email: formData.get('email')?.toString() || '',
+      phone: formData.get('phone')?.toString(),
+      address: formData.get('address')?.toString(),
+      city: formData.get('city')?.toString(),
+      state: formData.get('state')?.toString(),
+      postalCode: formData.get('postalCode')?.toString(),
+      country: formData.get('country')?.toString(),
+    }
+
     const validation = accountSchema.safeParse(body)
-    
+
     if (!validation.success) {
       return NextResponse.json(validation.error.errors, { status: 400 })
     }
@@ -33,24 +46,7 @@ export async function PUT(
 
     return NextResponse.json(account)
   } catch (error) {
-    return NextResponse.json(
-      { error: 'Internal Server Error' },
-      { status: 500 }
-    )
-  }
-}
-
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
-  try {
-    await db.account.delete({
-      where: { id: params.id }
-    })
-
-    return NextResponse.json({ message: 'Account deleted successfully' })
-  } catch (error) {
+    console.error('Update error:', error)
     return NextResponse.json(
       { error: 'Internal Server Error' },
       { status: 500 }

@@ -11,10 +11,9 @@ import Image from "next/image";
 const formSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
+  occupation: z.string().min(1, "Occupation is required"),
   image: z.any().optional(),
 });
-
 
 
 
@@ -61,6 +60,7 @@ export default function AccountForm({ initialData }: { initialData?: any }) {
       formData.append("firstName", data.firstName);
       formData.append("lastName", data.lastName);
       formData.append("occupation", data.occupation);
+
 
       // Handle image upload if exists
       if (data.image && data.image[0]) {

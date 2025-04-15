@@ -51,9 +51,9 @@ export default function Sidebar({ isOpen }: SidebarProps) {
             })}
           </div>
 
-          <div className="border-t border-gray-200 mt-4 pt-4 px-4">
+          <div className="border-t border-gray-200 mt-28 pt-4 px-4">
             <p className="text-[16px] font-bold text-[#000000] px-3 mb-2">Help & Support</p>
-            <div className="space-y-1">
+            <div className="space-y-1 mt-4">
               {supportItems.map((item) => {
                 const isActive = pathname === item.href
                 return (

@@ -1,6 +1,6 @@
 // import { AccountForm } from '@/components/AccountForm'
 
-import { AccountForm } from "@/app/components/AccountForm";
+import  AccountForm  from "@/app/components/AccountForm";
 
 export default function CreateAccount() {
   return (

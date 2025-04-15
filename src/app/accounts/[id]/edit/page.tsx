@@ -1,7 +1,14 @@
+import { Metadata } from 'next'
 import AccountForm from '@/app/components/AccountForm'
 import prisma from '@/lib/prisma'
 
-export default async function EditAccountPage({ params }: { params: { id: string } }) {
+interface EditAccountPageProps {
+  params: {
+    id: string
+  }
+}
+
+export default async function EditAccountPage({ params }: EditAccountPageProps) {
   const account = await prisma.account.findUnique({
     where: { id: params.id },
   })

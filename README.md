@@ -22,3 +22,8 @@ This is a Next.js application with PostgreSQL integration for managing account h
 - Account creation, updating, and deletion
 - Form validation
 - Responsive design
+
+## Assessment Focus
+- Implemented account holder management as specified
+- UI includes static user elements for design fidelity
+- No actual authentication implemented (per requirements)

@@ -41,30 +41,30 @@ export default function AccountForm({ initialData }: { initialData?: any }) {
   }
 
   const onSubmit = async (data: any) => {
-    setIsSubmitting(true)
     try {
-      const url = initialData?.id 
-        ? `/api/accounts/${initialData.id}`
-        : '/api/accounts'
-
-      const method = initialData?.id ? 'PUT' : 'POST'
-
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-
-      if (!response.ok) throw new Error('Failed to save account')
-
+      const formData = new FormData()
+      formData.append('firstName', data.firstName)
+      formData.append('lastName', data.lastName)
+      if (data.occupation) formData.append('occupation', data.occupation)
+      if (data.image) formData.append('image', data.image[0])
+  
+      const response = await fetch(
+        initialData?.id ? `/api/accounts/${initialData.id}` : '/api/accounts',
+        {
+          method: initialData?.id ? 'PUT' : 'POST',
+          body: formData
+        }
+      )
+  
+      if (!response.ok) {
+        throw new Error('Failed to save account')
+      }
+  
       router.refresh()
       router.push('/accounts')
     } catch (error) {
-      console.error(error)
-    } finally {
-      setIsSubmitting(false)
+      console.error('Submission error:', error)
+      alert('Failed to save account. Check console for details.')
     }
   }
 

@@ -11,9 +11,10 @@ import Image from "next/image";
 const formSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
   lastName: z.string().min(1, "Last name is required"),
-  occupation: z.string().min(1, "Occupation is required"),
+  email: z.string().email("Invalid email address"),
   image: z.any().optional(),
 });
+
 
 
 
